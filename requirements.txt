@@ -1,0 +1,12 @@
+Flask
+Flask-SQLAlchemy
+Flask-Session
+Flask-Mail
+python-dotenv
+google-generativeai
+google-api-core
+joblib
+scikit-learn
+pandas
+numpy
+plotly
