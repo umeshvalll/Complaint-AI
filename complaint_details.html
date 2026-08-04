@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}
+Complaint Details
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow border-0">
+
+        <div class="card-body">
+
+            <h2 class="mb-4">
+                📄 Complaint Details
+            </h2>
+
+            <hr>
+
+            <p>
+                <strong>
+                    Ticket ID:
+                </strong>
+                {{ complaint.ticket_id }}
+            </p>
+
+            <p>
+                <strong>
+                    Title:
+                </strong>
+                {{ complaint.title }}
+            </p>
+
+            <p>
+                <strong>
+                    Customer Name:
+                </strong>
+                {{ complaint.customer_name }}
+            </p>
+
+            <p>
+                <strong>
+                    Email:
+                </strong>
+                {{ complaint.email }}
+            </p>
+
+            <p>
+                <strong>
+                    Complaint:
+                </strong>
+            </p>
+
+            <div
+                class="p-3 bg-light rounded mb-3"
+            >
+                {{ complaint.complaint_text }}
+            </div>
+
+            <p>
+                <strong>
+                    Category:
+                </strong>
+                {{ complaint.category }}
+            </p>
+
+            <p>
+                <strong>
+                    Priority:
+                </strong>
+                {{ complaint.priority }}
+            </p>
+
+            <p>
+                <strong>
+                    Sentiment:
+                </strong>
+                {{ complaint.sentiment }}
+            </p>
+
+            <p>
+                <strong>
+                    Status:
+                </strong>
+                {{ complaint.status }}
+            </p>
+
+            <p>
+                <strong>
+                    Created:
+                </strong>
+
+                {% if complaint.created_at %}
+                    {{
+                        complaint.created_at.strftime(
+                            "%d %b %Y %I:%M %p"
+                        )
+                    }}
+                {% else %}
+                    -
+                {% endif %}
+
+            </p>
+
+            <a
+                href="/admin"
+                class="btn btn-primary mt-3"
+            >
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row g-4">
+
+        <div class="col-md-6">
+            <div class="glass-card feature-card">
+
+                <h1>👤</h1>
+
+                <h3>Customer Login</h3>
+
+                <p>
+                    Login to submit complaints and track tickets.
+                </p>
+
+                <a
+                    href="/user_login"
+                    class="primary-btn"
+                >
+                    Continue as User
+                </a>
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="glass-card feature-card">
+
+                <h1>🛡️</h1>
+
+                <h3>Administration Login</h3>
+
+                <p>
+                    Login to access analytics and dashboards.
+                </p>
+
+                <a
+                    href="/admin_login"
+                    class="primary-btn"
+                >
+                    Continue as Admin
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+
+        {% block title %}
+            Complaint AI
+        {% endblock %}
+
+    </title>
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Google Fonts -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Custom CSS -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    {% if session.get("user_id")
+        and request.path != "/"
+        and request.path != "/login"
+        and request.path != "/register"
+        and request.path != "/user_login"
+        and request.path != "/user_register"
+        and request.path != "/admin_login"
+        and request.path != "/admin_register"
+        and request.path != "/chat"
+        and request.path != "/voice"
+    %}
+
+        {% if session.get("role") == "admin" %}
+
+            {% include "components/admin_sidebar.html" %}
+
+        {% else %}
+
+            {% include "components/customer_sidebar.html" %}
+
+        {% endif %}
+
+    {% endif %}
+
+    <!-- MAIN CONTENT -->
+
+    <div
+        class="
+            content
+
+            {% if session.get('user_id')
+                and request.path != "/"
+                and request.path != "/login"
+                and request.path != "/register"
+                and request.path != "/user_login"
+                and request.path != "/user_register"
+                and request.path != "/admin_login"
+                and request.path != "/admin_register"
+                and request.path != "/chat"
+                and request.path != "/voice"
+            %}
+                content-with-sidebar
+            {% endif %}
+        "
+    >
+
+        <!-- NAVBAR -->
+
+        <nav
+            class="
+                navbar
+                navbar-expand-lg
+                {% if request.path == '/chat' %}
+                    chat-navbar
+                {% else %}
+                    glass-navbar
+                    sticky-top
+                    mb-5
+                {% endif %}
+            "
+        >
+
+            <div class="container-fluid">
+
+                <!-- LEFT SIDE -->
+
+                <a
+                    href="/"
+                    class="
+                        navbar-brand
+                        d-flex
+                        align-items-center
+                        gap-3
+                        text-decoration-none
+                    "
+                >
+
+                    {% if request.path == "/chat" %}
+                    
+                    <div class="d-flex align-items-center gap-2">
+                        <i
+                            class="bi bi-stars"
+                            style="
+                                font-size:30px;
+                                color:#6C63FF;
+                            "
+                        ></i>
+
+                        <span
+                            style="
+                                font-size:28px;
+                                font-weight:700;
+                            "
+                        >
+                            Complaint AI
+                        </span>
+
+                    </div>
+
+                    {% else %}
+
+                    <div class="logo-circle">
+
+                        CX
+
+                    </div>
+
+                    <div>
+
+                        <div class="brand-title">
+
+                            Complaint AI
+
+                        </div>
+
+                        <small class="brand-subtitle">
+
+                            Customer Experience Platform
+
+                        </small>
+
+                    </div>
+
+                    {% endif %}
+
+                </a>
+
+                <!-- RIGHT SIDE -->
+
+                <div
+                    class="
+                        d-flex
+                        align-items-center
+                        gap-3
+                    "
+                >
+
+                    {% if session.get("user_id")
+                        and request.path != "/"
+                        and request.path != "/login"
+                        and request.path != "/register"
+                        and request.path != "/user_login"
+                        and request.path != "/user_register"
+                        and request.path != "/admin_login"
+                        and request.path != "/admin_register"
+                    %}
+
+                        <div
+                            class="
+                                user-pill
+                                d-flex
+                                align-items-center
+                                gap-2
+                            "
+                        >
+
+                            <i
+                                class="
+                                    bi
+                                    bi-person-circle
+                                "
+                            ></i>
+
+                            <span>
+
+                                {{ session.get("user_name") }}
+
+                            </span>
+
+                        </div>
+
+                    {% endif %}
+
+                    <!-- Theme Toggle -->
+
+                    <button
+                        class="btn-theme"
+                        onclick="toggleTheme()"
+                        title="Toggle Theme"
+                    >
+
+                        <i
+                            class="
+                                bi
+                                bi-moon-stars-fill
+                            "
+                        ></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+        <!-- FLASH MESSAGES -->
+
+        {% with messages =
+            get_flashed_messages(
+                with_categories=true
+            )
+        %}
+
+            {% if messages %}
+
+                {% for category, message in messages %}
+
+                    <div
+                        class="
+                            alert
+                            alert-{{ category }}
+                            shadow-sm
+                            rounded-4
+                            mb-4
+                        "
+                    >
+
+                        {{ message }}
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+        <!-- PAGE CONTENT -->
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+    <!-- Bootstrap -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+    <!-- Theme JS -->
+
+    <script
+        src="{{ url_for(
+            'static',
+            filename='js/theme.js'
+        ) }}"
+    ></script>
+
+    <!-- Voice JS -->
+
+    <script
+        src="{{ url_for(
+            'static',
+            filename='js/voice.js'
+        ) }}"
+    ></script>
+
+</body>
+
+</html>

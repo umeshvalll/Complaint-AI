@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}
+Ticket Details
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow border-0">
+
+        <div class="card-body p-5">
+
+            <h2 class="mb-4">
+                🎫 Ticket Details
+            </h2>
+
+            <hr>
+
+            <p>
+                <strong>Ticket ID:</strong>
+                {{ complaint.ticket_id }}
+            </p>
+
+            <p>
+                <strong>Customer:</strong>
+                {{ complaint.customer_name }}
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                {{ complaint.email }}
+            </p>
+
+            <p>
+                <strong>Title:</strong>
+                {{ complaint.title }}
+            </p>
+
+            <p>
+                <strong>Category:</strong>
+                {{ complaint.category }}
+            </p>
+
+            <p>
+                <strong>Priority:</strong>
+                {{ complaint.priority }}
+            </p>
+
+            <p>
+                <strong>Sentiment:</strong>
+                {{ complaint.sentiment }}
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                {{ complaint.status }}
+            </p>
+
+            <p>
+                <strong>Complaint:</strong>
+            </p>
+
+            <div
+                class="border rounded p-3 bg-light"
+            >
+                {{ complaint.complaint_text }}
+            </div>
+
+            <a
+                href="/admin"
+                class="btn btn-primary mt-4"
+            >
+                Back
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

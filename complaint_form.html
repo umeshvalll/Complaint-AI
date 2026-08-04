@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}
+Submit Complaint
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center mt-5">
+
+```
+<div class="col-md-8">
+
+    <div class="card shadow-lg border-0">
+
+        <div class="card-body p-5">
+
+            <h2 class="text-center mb-4">
+                🤖 Submit Complaint
+            </h2>
+
+            <p class="text-center text-muted mb-5">
+                Hello {{ session["user_name"] }}, please describe your problem below.
+            </p>
+
+            <form method="POST">
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+                        Describe Your Problem
+                    </label>
+
+                    <textarea
+                        name="complaint_text"
+                        rows="6"
+                        class="form-control form-control-lg"
+                        placeholder="Explain your issue in detail..."
+                        required
+                    ></textarea>
+
+                </div>
+
+                <div class="d-grid">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-lg"
+                    >
+                        Submit Complaint
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+{% endblock %}

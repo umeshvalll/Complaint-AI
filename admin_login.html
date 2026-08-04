@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+Admin Login
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow p-5">
+
+        <h2 class="mb-4">
+            Admin Login
+        </h2>
+
+        <form method="POST">
+
+            <input
+                type="email"
+                name="email"
+                class="form-control mb-3"
+                placeholder="Email"
+                required
+            >
+
+            <input
+                type="password"
+                name="password"
+                class="form-control mb-3"
+                placeholder="Password"
+                required
+            >
+
+            <button
+                class="btn btn-dark"
+            >
+                Login
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

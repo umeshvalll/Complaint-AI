@@ -1,0 +1,59 @@
+<div class="sidebar">
+
+    <h2>🛡 Complaint AI</h2>
+
+    <ul>
+
+        <li>
+            <a
+                href="/dashboard"
+                class="{% if request.path == '/dashboard' %}active{% endif %}"
+            >
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="/chat"
+                class="{% if request.path == '/chat' %}active{% endif %}"
+            >
+                AI Assistant
+            </a>
+        </li>
+        <li>
+            <a
+                href="/my-complaints"
+                class="{% if request.path == '/my-complaints' %}active{% endif %}"
+            >
+                My Complaints
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="/track"
+                class="{% if request.path == '/track' %}active{% endif %}"
+            >
+                Track Ticket
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="/chat-history"
+                class="{% if request.path == '/chat-history' %}active{% endif %}"
+            >
+                Chat History
+            </a>
+        </li>
+
+        <li>
+            <a href="/logout">
+                Logout
+            </a>
+        </li>
+
+    </ul>
+
+</div>

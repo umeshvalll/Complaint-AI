@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <!-- Welcome -->
+
+    <div class="mb-5">
+
+        <h1 class="display-4 fw-bold">
+
+            Welcome,
+            {{ session.get("user_name") }}
+
+        </h1>
+
+        <p class="text-muted fs-5">
+
+            Manage your complaints, track ticket status and interact
+            with Complaint AI.
+
+        </p>
+
+    </div>
+
+    <!-- Statistics -->
+
+    <div class="row g-4 mb-5">
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="glass-card text-center p-4">
+
+                <h5>Total Complaints</h5>
+
+                <h1 class="fw-bold text-primary">
+
+                    {{ total_complaints|default(0) }}
+
+                </h1>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="glass-card text-center p-4">
+
+                <h5>Open Tickets</h5>
+
+                <h1 class="fw-bold text-warning">
+
+                    {{ open_complaints|default(0) }}
+
+                </h1>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="glass-card text-center p-4">
+
+                <h5>Resolved</h5>
+
+                <h1 class="fw-bold text-success">
+
+                    {{ resolved_complaints|default(0) }}
+
+                </h1>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="glass-card text-center p-4">
+
+                <h5>High Priority</h5>
+
+                <h1 class="fw-bold text-danger">
+
+                    {{ high_priority|default(0) }}
+
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Quick Actions -->
+
+    <div class="glass-card p-4 mb-5">
+
+        <h3 class="mb-4">
+
+            Quick Actions
+
+        </h3>
+
+        <div class="row g-3">
+
+            <div class="col-md-3">
+
+                <a
+                    href="/chat"
+                    class="btn btn-primary w-100 py-3"
+                >
+                    <i class="bi bi-stars"></i>
+                    AI Assistant
+
+                </a>
+
+            </div>
+            <div class="col-md-3">
+
+                <a
+                    href="/track"
+                    class="btn btn-warning w-100 py-3"
+                >
+
+                    🔍 Track Ticket
+
+                </a>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <a
+                    href="/my-complaints"
+                    class="btn btn-dark w-100 py-3"
+                >
+
+                    📋 My Complaints
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- AI Insight -->
+
+    <div class="glass-card p-4">
+
+        <h3>
+            <i class="bi bi-graph-up-arrow"></i>
+            AI Insight
+
+        </h3>
+
+        <p class="text-muted mb-0">
+
+            Welcome to Complaint AI.
+
+            Use the AI Assistant to submit a complaint,
+            the Voice Assistant to speak your complaint,
+            or Track Ticket to check the latest status.
+
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

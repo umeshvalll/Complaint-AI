@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create Account
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <h1 class="fw-bold">
+            Create Your Account
+        </h1>
+
+        <p class="text-muted fs-5">
+            Choose how you would like to register.
+        </p>
+
+    </div>
+
+    <div class="row justify-content-center g-4">
+
+        <div class="col-lg-5">
+
+            <div class="glass-card feature-card">
+
+                <h1>👤</h1>
+
+                <h3>Customer Account</h3>
+
+                <p>
+
+                    Register to submit complaints,
+                    track tickets and interact with
+                    Complaint AI.
+
+                </p>
+
+                <a
+                    href="/user_register"
+                    class="primary-btn mt-3"
+                >
+                    Register as User
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-5">
+
+            <div class="glass-card feature-card">
+
+                <h1>🛡️</h1>
+
+                <h3>Administrator Account</h3>
+
+                <p>
+
+                    Register as an administrator.
+                    A valid Admin Secret Key
+                    is required.
+
+                </p>
+
+                <a
+                    href="/admin_register"
+                    class="primary-btn mt-3"
+                >
+                    Register as Admin
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

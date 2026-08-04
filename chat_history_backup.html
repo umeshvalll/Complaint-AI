@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Chat History
+</h2>
+
+{% for chat in chats %}
+
+<div class="card mb-3">
+
+    <div class="card-body">
+
+        <h5>
+            {{ chat.role }}
+        </h5>
+
+        <p>
+            {{ chat.message }}
+        </p>
+
+        <small>
+            {{ chat.created_at }}
+        </small>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

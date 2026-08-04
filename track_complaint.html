@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block title %}
+Track Complaint
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h2 class="mb-4">
+                🔍 Track Complaint
+            </h2>
+
+            <form method="POST">
+
+                <div class="input-group mb-4">
+
+                    <input
+                        type="text"
+                        name="ticket_id"
+                        class="form-control"
+                        placeholder="Enter Ticket ID"
+                        required
+                    >
+
+                    <button
+                        class="btn btn-primary"
+                    >
+                        Search
+                    </button>
+
+                </div>
+
+            </form>
+
+            {% if message %}
+
+                <div
+                    class="alert alert-danger"
+                >
+                    {{ message }}
+                </div>
+
+            {% endif %}
+
+            {% if complaint %}
+
+                <div
+                    class="card border-0 bg-light"
+                >
+
+                    <div class="card-body">
+
+                        <h4 class="mb-4">
+                            🎫 Complaint Details
+                        </h4>
+
+                        <p>
+                            <strong>
+                                Ticket ID:
+                            </strong>
+
+                            {{ complaint.ticket_id }}
+                        </p>
+
+                        <p>
+                            <strong>
+                                Title:
+                            </strong>
+
+                            {{ complaint.title }}
+                        </p>
+
+                        <p>
+                            <strong>
+                                Customer:
+                            </strong>
+
+                            {{ complaint.customer_name }}
+                        </p>
+
+                        <p>
+                            <strong>
+                                Email:
+                            </strong>
+
+                            {{ complaint.email }}
+                        </p>
+
+                        <p>
+                            <strong>
+                                Category:
+                            </strong>
+
+                            {{ complaint.category }}
+                        </p>
+
+                        <p>
+                            <strong>
+                                Sentiment:
+                            </strong>
+
+                            {{ complaint.sentiment }}
+                        </p>
+
+                        <p>
+                            <strong>
+                                Priority:
+                            </strong>
+
+                            {{ complaint.priority }}
+                        </p>
+
+                        <p>
+                            <strong>
+                                Created:
+                            </strong>
+
+                            {{ complaint.created_at.strftime("%d %b %Y %I:%M %p") }}
+                        </p>
+
+                        <p>
+
+                            <strong>
+                                Status:
+                            </strong>
+
+                            {% if complaint.status == "Open" %}
+
+                                <span
+                                    class="badge bg-danger"
+                                >
+                                    Open
+                                </span>
+
+                            {% elif complaint.status == "In Progress" %}
+
+                                <span
+                                    class="badge bg-warning text-dark"
+                                >
+                                    In Progress
+                                </span>
+
+                            {% else %}
+
+                                <span
+                                    class="badge bg-success"
+                                >
+                                    Resolved
+                                </span>
+
+                            {% endif %}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

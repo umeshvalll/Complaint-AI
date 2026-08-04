@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block title %}
+Customer Management
+{% endblock %}
+
+{% block content %}
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/dashboard.css') }}"
+>
+
+<div class="dashboard-container">
+
+    {% include "components/admin_sidebar.html" %}
+
+    <main class="dashboard-main">
+
+        <div class="dashboard-header">
+
+            <div class="profile-section">
+
+                <div class="profile-chip">
+                    
+                    {{ session["admin_name"] }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <h2 class="mb-4">
+
+            <i class="bi bi-people-fill"></i>
+
+            Customer Management
+
+        </h2>
+
+
+        <div class="row g-4 mb-4">
+
+            <div class="col-md-3">
+
+                <div class="dashboard-card text-center">
+
+                    <h6>Total Customers</h6>
+
+                    <h2>
+
+                        {{ users|length }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="dashboard-card text-center">
+
+                    <h6>Customers</h6>
+
+                    <h2>
+
+                        {{ users|length }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="card shadow-sm border-0 rounded-4">
+
+            <div class="card-header bg-dark text-white">
+
+                <h5 class="mb-0">
+
+                    Registered Customers
+
+                </h5>
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Name</th>
+
+                            <th>Email</th>
+
+                            <th>Role</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for user in users %}
+
+                        <tr>
+
+                            <td>
+
+                                {{ user.id }}
+
+                            </td>
+
+                            <td>
+
+                                {{ user.name }}
+
+                            </td>
+
+                            <td>
+
+                                {{ user.email }}
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-primary">
+
+                                    {{ user.role }}
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="btn btn-sm btn-primary"
+                                >
+
+                                    <i class="bi bi-eye-fill"></i>
+
+                                    View
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block title %}
+My Complaints
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h2 class="mb-4">
+        📋 My Complaints
+    </h2>
+
+    {% if complaints %}
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>
+                            Ticket ID
+                        </th>
+
+                        <th>
+                            Title
+                        </th>
+
+                        <th>
+                            Category
+                        </th>
+
+                        <th>
+                            Priority
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for complaint in complaints %}
+
+                    <tr>
+
+                        <td>
+
+                            <a
+                                href="/ticket/{{ complaint.ticket_id }}"
+                                class="text-decoration-none fw-bold"
+                            >
+                                {{ complaint.ticket_id }}
+                            </a>
+
+                        </td>
+
+                        <td>
+                            {{ complaint.title }}
+                        </td>
+
+                        <td>
+                            {{ complaint.category }}
+                        </td>
+
+                        <td>
+
+                            {% if complaint.priority == "High" %}
+
+                                <span class="badge bg-danger">
+                                    High
+                                </span>
+
+                            {% elif complaint.priority == "Medium" %}
+
+                                <span class="badge bg-warning text-dark">
+                                    Medium
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-success">
+                                    Low
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            {% if complaint.status == "Open" %}
+
+                                <span class="badge bg-danger">
+                                    Open
+                                </span>
+
+                            {% elif complaint.status == "In Progress" %}
+
+                                <span class="badge bg-warning text-dark">
+                                    In Progress
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-success">
+                                    Resolved
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            {% if complaint.created_at %}
+
+                                {{
+                                    complaint.created_at.strftime(
+                                        "%d %b %Y %I:%M %p"
+                                    )
+                                }}
+
+                            {% else %}
+
+                                -
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="/ticket/{{ complaint.ticket_id }}"
+                                class="btn btn-primary btn-sm"
+                            >
+                                View
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    {% else %}
+
+        <div class="alert alert-info">
+
+            No complaints submitted yet.
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

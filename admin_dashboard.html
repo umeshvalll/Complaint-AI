@@ -1,0 +1,318 @@
+{% extends "base.html" %}
+
+{% block title %}
+Admin Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1 class="display-5 fw-bold mb-2">
+        Complaint Intelligence Dashboard
+    </h1>
+
+    <p class="text-muted mb-5">
+        Monitor complaints, resolutions, and high-risk customer issues.
+    </p>
+
+    <div class="row">
+
+        <div class="col-md-2 mb-3">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Total</h6>
+                    <h2 class="fw-bold">
+                        {{ complaints|length }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Open</h6>
+                    <h2 class="fw-bold text-primary">
+                        {{
+                            complaints
+                            | selectattr(
+                                "status",
+                                "equalto",
+                                "Open"
+                            )
+                            | list
+                            | length
+                        }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Resolved</h6>
+                    <h2 class="fw-bold text-success">
+                        {{
+                            complaints
+                            | selectattr(
+                                "status",
+                                "equalto",
+                                "Resolved"
+                            )
+                            | list
+                            | length
+                        }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">High Priority</h6>
+                    <h2 class="fw-bold text-danger">
+                        {{
+                            complaints
+                            | selectattr(
+                                "priority",
+                                "equalto",
+                                "High"
+                            )
+                            | list
+                            | length
+                        }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">High Risk</h6>
+                    <h2 class="fw-bold text-dark">
+                        {{
+                            complaints
+                            | selectattr(
+                                "dispute_risk",
+                                "equalto",
+                                "Yes"
+                            )
+                            | list
+                            | length
+                        }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Plotly Charts -->
+
+    <div class="row mt-5">
+
+        <div class="col-md-4">
+            {{ sentiment_chart|safe }}
+        </div>
+
+        <div class="col-md-4">
+            {{ priority_chart|safe }}
+        </div>
+
+        <div class="col-md-4">
+            {{ risk_chart|safe }}
+        </div>
+
+    </div>
+
+    <!-- Complaint Table -->
+
+    <div class="card shadow mt-4">
+
+        <div class="card-header bg-dark text-white">
+
+            <h4 class="mb-0">
+                Complaint Tickets
+            </h4>
+
+        </div>
+
+        <div class="card-body table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Ticket ID</th>
+
+                        <th>Title</th>
+
+                        <th>Name</th>
+
+                        <th>Category</th>
+
+                        <th>Priority</th>
+
+                        <th>Sentiment</th>
+
+                        <th>Status</th>
+
+                        <th>Risk</th>
+
+                        <th>Created</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for complaint in complaints %}
+
+                    <tr>
+
+                        <td>
+                            {{ complaint.ticket_id }}
+                        </td>
+
+                        <td>
+                            {{ complaint.title }}
+                        </td>
+
+                        <td>
+                            {{ complaint.customer_name }}
+                        </td>
+
+                        <td>
+                            {{ complaint.category }}
+                        </td>
+
+                        <td>
+
+                            {% if complaint.priority == "High" %}
+
+                                <span class="badge bg-danger">
+                                    High
+                                </span>
+
+                            {% elif complaint.priority == "Medium" %}
+
+                                <span class="badge bg-warning">
+                                    Medium
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-success">
+                                    Low
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+                            {{ complaint.sentiment }}
+                        </td>
+
+                        <td>
+
+                            {% if complaint.status == "Open" %}
+
+                                <span class="badge bg-primary">
+                                    Open
+                                </span>
+
+                            {% elif complaint.status == "Resolved" %}
+
+                                <span class="badge bg-success">
+                                    Resolved
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-secondary">
+                                    {{ complaint.status }}
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            {% if complaint.dispute_risk == "Yes" %}
+
+                                <span class="badge bg-dark">
+                                    High Risk
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-success">
+                                    Low Risk
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            {{ complaint.created_at.strftime("%d-%m-%Y") }}
+
+                        </td>
+
+                        <td>
+
+                            {% if complaint.status == "Open" %}
+
+                                <a
+                                    href="/update/{{ complaint.ticket_id }}/Resolved"
+                                    class="btn btn-sm btn-success"
+                                >
+                                    Resolve
+                                </a>
+
+                            {% elif complaint.status == "Resolved" %}
+
+                                <a
+                                    href="/update/{{ complaint.ticket_id }}/Open"
+                                    class="btn btn-sm btn-warning"
+                                >
+                                    Reopen
+                                </a>
+
+                            {% else %}
+
+                                <span class="text-muted">
+                                    -
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

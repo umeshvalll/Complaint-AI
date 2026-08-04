@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block title %}
+Admin Registration
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-6">
+
+            <div class="glass-card p-5">
+
+                <div class="text-center mb-5">
+
+                    <div
+                        style="
+                            width:80px;
+                            height:80px;
+                            border-radius:50%;
+                            margin:auto;
+                            display:flex;
+                            align-items:center;
+                            justify-content:center;
+                            font-size:36px;
+                            background:linear-gradient(
+                                135deg,
+                                #DC2626,
+                                #EF4444
+                            );
+                        "
+                    >
+
+                        🛡️
+
+                    </div>
+
+                    <h2
+                        class="
+                            fw-bold
+                            mt-4
+                        "
+                    >
+
+                        Admin Registration
+
+                    </h2>
+
+                    <p
+                        class="
+                            text-secondary
+                            mt-3
+                        "
+                    >
+
+                        Create an administrator account
+                        to manage complaints, analytics,
+                        and support operations.
+
+                    </p>
+
+                </div>
+
+                <form method="POST">
+
+                    <div class="mb-4">
+
+                        <label
+                            class="form-label"
+                        >
+
+                            Full Name
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="name"
+                            class="form-control"
+                            placeholder="Enter Full Name"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label
+                            class="form-label"
+                        >
+
+                            Email Address
+
+                        </label>
+
+                        <input
+                            type="email"
+                            name="email"
+                            class="form-control"
+                            placeholder="admin@example.com"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label
+                            class="form-label"
+                        >
+
+                            Password
+
+                        </label>
+
+                        <input
+                            type="password"
+                            name="password"
+                            class="form-control"
+                            placeholder="Enter Password"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label
+                            class="form-label"
+                        >
+
+                            Admin Secret Key
+
+                        </label>
+
+                        <input
+                            type="password"
+                            name="secret_key"
+                            class="form-control"
+                            placeholder="Enter Secret Key"
+                            required
+                        >
+
+                        <small
+                            class="
+                                text-secondary
+                            "
+                        >
+
+                            Administrator access
+                            requires a valid secret key.
+
+                        </small>
+
+                    </div>
+
+                    <div
+                        class="
+                            d-grid
+                            mt-5
+                        "
+                    >
+
+                        <button
+                            type="submit"
+                            class="
+                                btn
+                                btn-danger
+                                btn-lg
+                            "
+                        >
+
+                            Create Admin Account
+
+                        </button>
+
+                    </div>
+
+                    <div
+                        class="
+                            text-center
+                            mt-4
+                        "
+                    >
+
+                        <span
+                            class="
+                                text-secondary
+                            "
+                        >
+
+                            Already have an
+                            administrator account?
+
+                        </span>
+
+                        <br>
+
+                        <a
+                            href="/admin_login"
+                            class="
+                                text-decoration-none
+                            "
+                        >
+
+                            Sign In
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+<div class="sidebar">
+
+    <h2>🛡 Complaint AI</h2>
+
+    <ul>
+
+        <li>
+            <a
+                href="/admin"
+                class="{% if request.path == '/admin' %}active{% endif %}"
+            >
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="/admin/customers"
+                class="{% if request.path == '/admin/customers' %}active{% endif %}"
+            >
+                Customer Management
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="/admin/analytics"
+                class="{% if request.path == '/analytics' %}active{% endif %}"
+            >
+                Analytics
+            </a>
+        </li>
+
+        <li>
+            <a href="/logout">
+                Logout
+            </a>
+        </li>
+
+    </ul>
+
+</div>
