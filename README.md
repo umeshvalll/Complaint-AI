@@ -141,47 +141,119 @@ Email Notification
 
 # 📸 Project Screenshots
 
+---
+
 ## 🏠 Home Page
 
-(Add Screenshot)
+![Home Page](screenshots/Home1.jpeg)
 
 ---
 
-## 🤖 AI Chatbot
+## ✨ Platform Features
 
-(Add Screenshot)
+![Platform Features](screenshots/Home2.jpeg)
 
 ---
 
-## 👤 Customer Dashboard
+## 🔐 Login
 
-(Add Screenshot)
+![Login](screenshots/Login.jpeg)
+
+---
+
+## 📝 Registration
+
+![Registration](screenshots/Signup.jpeg)
+
+---
+
+## 📊 Customer Dashboard
+
+![Dashboard](screenshots/Dashboard.jpeg)
+
+---
+
+## 🤖 AI Complaint Chatbot
+
+### Complaint Conversation
+
+![Chat 1](screenshots/Chat1.jpeg)
+
+### AI Follow-up & Ticket Suggestion
+
+![Chat 2](screenshots/Chat2.jpeg)
+
+### Complaint Ticket Created
+
+![Chat 3](screenshots/Chat3.jpeg)
+
+---
+
+## 🎫 Complaint History
+
+![Complaints](screenshots/Complaints.jpeg)
+
+---
+
+## 📄 Ticket Details
+
+![Ticket Details](screenshots/ticket.jpeg)
+
+---
+
+## 📍 Complaint Tracking
+
+![Track Complaint](screenshots/track.jpeg)
 
 ---
 
 ## 👨‍💼 Admin Dashboard
 
-(Add Screenshot)
+![Admin Dashboard](screenshots/admin_dashboard.jpeg)
 
 ---
 
-## 📊 Analytics Dashboard
+## 👥 Customer Management
 
-(Add Screenshot)
-
----
-
-## 🎫 Complaint Ticket
-
-(Add Screenshot)
+![Customer Management](screenshots/manage_customer.jpeg)
 
 ---
 
-## 📜 Complaint History
+## 📋 Complaint Management
 
-(Add Screenshot)
+![Admin Complaint Management](screenshots/admin_dashboard2.jpeg)
 
 ---
+
+## 📈 Analytics Dashboard
+
+![Analytics Dashboard](screenshots/analytics.jpeg)
+
+![Analytics Dashboard](screenshots/analytics2.jpeg)
+
+![Analytics Dashboard](screenshots/analytics3.jpeg)
+
+---
+
+## 📧 Email Notification
+
+![Email Notification](screenshots/mail1.jpeg)
+
+![Email Notification](screenshots/mail2.jpeg)
+
+---
+
+## 🗄️ Database
+
+![Database 1](screenshots/database.jpeg)
+
+![Database 2](screenshots/database2.jpeg)
+
+![Database 3](screenshots/database3.jpeg)
+
+![Database 4](screenshots/database4.jpeg)
+
+![Database 5](screenshots/database5.jpeg)
 
 # 📊 Machine Learning
 
